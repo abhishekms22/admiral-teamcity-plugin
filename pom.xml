@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.shipright.teamcity</groupId>
-    <artifactId>admiral-trigger</artifactId>
+    <artifactId>admiral-teamcity-plugin</artifactId>
     <version>0.1-SNAPSHOT</version>
 
     <packaging>pom</packaging>
@@ -45,25 +45,46 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.3</version>
                     <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.jetbrains.teamcity</groupId>
-                    <artifactId>teamcity-sdk-maven-plugin</artifactId>
-                    <version>0.2</version>
-                    <configuration>
-                        <teamcityDir>../TC_Servers/TeamCity_8.1</teamcityDir> <!-- optional -->
+                        <source>1.6</source>
+                        <target>1.6</target>
                     </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
+    <profiles>
+        <profile>
+            <id>development</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <dev.teamcity.dir>w:\dist\tc</dev.teamcity.dir>
+                <dev.teamcity.data.path>w:\dist\PluginDev.Data.GitHubIssues</dev.teamcity.data.path>
+                <dev.teamcity.version>10.0 EAP</dev.teamcity.version>
+                <dev.teamcity.start.agent>false</dev.teamcity.start.agent>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jetbrains.teamcity</groupId>
+                        <artifactId>teamcity-sdk-maven-plugin</artifactId>
+                        <version>0.2</version>
+                        <configuration>
+                            <teamcityDir>${dev.teamcity.dir}</teamcityDir>
+                            <dataDirectory>${dev.teamcity.data.path}</dataDirectory>
+                            <teamcityVersion>${dev.teamcity.version}</teamcityVersion>
+                            <!--<startAgent>${dev.teamcity.start.agent}</startAgent>-->
+                            <serverDebugStr>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=10111 -Dteamcity.development.mode=true -Dteamcity.oauthConnections.enabled=true</serverDebugStr>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
     <modules>
-        <module>admiral-trigger-common</module>
-        <!-- <module>admiral-trigger-agent</module> -->
-        <module>admiral-trigger-server</module>
+        <module>admiral-notifier</module>
         <module>build</module>
     </modules>
 </project>

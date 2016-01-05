@@ -15,8 +15,7 @@
         <moduleSet>
             <useAllReactorProjects>true</useAllReactorProjects>
             <includes>
-                <include>io.shipright.teamcity:deploy-runner-server</include>
-                <include>io.shipright.teamcity:deploy-runner-common</include>
+                <include>io.shipright.teamcity:admiral-notifer</include>
             </includes>
             <binaries>
                 <outputDirectory>server</outputDirectory>

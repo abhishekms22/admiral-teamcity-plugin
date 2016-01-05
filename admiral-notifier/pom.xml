@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.shipright.teamcity</groupId>
-        <artifactId>admiral-trigger</artifactId>
+        <artifactId>admiral-teamcity-plugin</artifactId>
         <version>0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>admiral-trigger-server</artifactId>
+    <artifactId>admiral-notifier</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
