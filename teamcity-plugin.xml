@@ -2,11 +2,11 @@
 <teamcity-plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xsi:noNamespaceSchemaLocation="urn:shemas-jetbrains-com:teamcity-plugin-v1-xml">
     <info>
-        <name>admiral-notifer</name>
-        <display-name>Admiral Notifer</display-name>
+        <name>admiral-integration-plugin</name>
+        <display-name>Admiral Integration</display-name>
         <version>@Version@</version>
-        <description>Set of Runners for basic deployment tasks</description>
-        <download-url>http://confluence.jetbrains.com/display/TW/Deployer+plugin</download-url>
+        <description>Integration with Shipright Admiral deployment pipeline</description>
+        <download-url>https://shipright.io/products/admiral</download-url>
         <vendor>
             <name>Shipright LLC.</name>
             <url>https://shipright.io</url>

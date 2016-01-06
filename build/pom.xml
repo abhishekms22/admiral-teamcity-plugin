@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.shipright.teamcity</groupId>
-        <artifactId>admiral-teamcity-plugin</artifactId>
+        <artifactId>admiral-plugin</artifactId>
         <version>0.1-SNAPSHOT</version>
     </parent>
 
@@ -21,12 +21,17 @@
     <dependencies>
         <dependency>
             <groupId>io.shipright.teamcity</groupId>
-            <artifactId>admiral-trigger-common</artifactId>
+            <artifactId>admiral-agent</artifactId>
             <version>0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>io.shipright.teamcity</groupId>
-            <artifactId>admiral-trigger-server</artifactId>
+            <artifactId>admiral-common</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>io.shipright.teamcity</groupId>
+            <artifactId>admiral-server</artifactId>
             <version>0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
@@ -73,13 +78,27 @@
                 <version>2.4</version>
                 <executions>
                     <execution>
+                        <id>make-agent-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>admiral-agent</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <descriptors>
+                                <descriptor>plugin-agent-assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>make-assembly</id>
                         <phase>package</phase>
                         <goals>
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <finalName>admiral-trigger</finalName>
+                            <finalName>admiral-plugin</finalName>
                             <outputDirectory>${project.parent.build.directory}</outputDirectory>
                             <appendAssemblyId>false</appendAssemblyId>
                             <descriptors>

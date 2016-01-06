@@ -1,18 +1,14 @@
 <?xml version="1.0"?>
 <assembly>
-    <id>plugin-assembly</id>
+    <id>plugin-agent-assembly</id>
     <includeBaseDirectory>false</includeBaseDirectory>
     <formats>
         <format>zip</format>
     </formats>
     <files>
         <file>
-            <source>target/teamcity-plugin.xml</source>
+            <source>../admiral-agent/teamcity-plugin.xml</source>
             <outputDirectory>/</outputDirectory>
-        </file>
-        <file>
-            <source>target/admiral-agent.zip</source>
-            <outputDirectory>agent</outputDirectory>
         </file>
     </files>
     <moduleSets>
@@ -20,10 +16,10 @@
             <useAllReactorProjects>true</useAllReactorProjects>
             <includes>
                 <include>io.shipright.teamcity:admiral-common</include>
-                <include>io.shipright.teamcity:admiral-server</include>
+                <include>io.shipright.teamcity:admiral-agent</include>
             </includes>
             <binaries>
-                <outputDirectory>server</outputDirectory>
+                <outputDirectory>lib</outputDirectory>
                 <unpack>false</unpack>
                 <dependencySets>
                     <dependencySet>

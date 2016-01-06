@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.shipright.teamcity</groupId>
-    <artifactId>admiral-teamcity-plugin</artifactId>
+    <artifactId>admiral-plugin</artifactId>
     <version>0.1-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
     <properties>
-        <teamcity-version>9.0.3</teamcity-version>
+        <teamcity-version>9.1.5</teamcity-version>
     </properties>
     <repositories>
         <repository>
@@ -71,9 +71,9 @@
                         <artifactId>teamcity-sdk-maven-plugin</artifactId>
                         <version>0.2</version>
                         <configuration>
-                            <teamcityDir>${dev.teamcity.dir}</teamcityDir>
-                            <dataDirectory>${dev.teamcity.data.path}</dataDirectory>
-                            <teamcityVersion>${dev.teamcity.version}</teamcityVersion>
+                            <!--<teamcityDir>${dev.teamcity.dir}</teamcityDir>-->
+                            <!--<dataDirectory>${dev.teamcity.data.path}</dataDirectory>-->
+                            <!--<teamcityVersion>${dev.teamcity.version}</teamcityVersion>-->
                             <!--<startAgent>${dev.teamcity.start.agent}</startAgent>-->
                             <serverDebugStr>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=10111 -Dteamcity.development.mode=true -Dteamcity.oauthConnections.enabled=true</serverDebugStr>
                         </configuration>
@@ -84,7 +84,9 @@
     </profiles>
 
     <modules>
-        <module>admiral-notifier</module>
+        <module>admiral-server</module>
+        <module>admiral-agent</module>
+        <module>admiral-common</module>
         <module>build</module>
     </modules>
 </project>
